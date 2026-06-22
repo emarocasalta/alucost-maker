@@ -6,6 +6,8 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
@@ -13,5 +15,9 @@ export default defineConfig({
     server: { entry: "server" },
   },
   // Agregamos esta línea vacía para que el lector automático de Cloudflare encuentre su matriz de plugins y no falle
-  plugins: [],
+  plugins: [cloudflare({
+    viteEnvironment: {
+      name: "ssr"
+    }
+  })],
 });

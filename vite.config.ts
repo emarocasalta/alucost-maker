@@ -12,4 +12,6 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Agregamos esta línea vacía para que el lector automático de Cloudflare encuentre su matriz de plugins y no falle
+  plugins: [],
 });
